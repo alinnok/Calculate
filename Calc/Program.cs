@@ -41,8 +41,17 @@ namespace calculation
                 case "/":
                     {
                         var result = a / b;
-                        Console.WriteLine($"{a} / {b} = {result}");
-                        break;
+                        {
+                            if (b != 0)
+                                Console.WriteLine($"{a} / {b} = {result}");
+                                break;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Делить на 0 нельзя!");
+                            break;
+                        }
+
                     }
                 default:
                     {
