@@ -8,13 +8,13 @@ namespace calculation
         {
 
 
-            Console.WriteLine($"Введите первое число");
-            int a = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine($"Введите операцию (+,-,*,/)");
+            Console.WriteLine("Введите первое число");
+            double a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введите операцию (+,-,*,/)");
             string oper = Console.ReadLine();
-            Console.WriteLine($"Введите второе число");
-            int b = Convert.ToInt32(Console.ReadLine());
-            //int result;
+            Console.WriteLine("Введите второе число");
+            double b = Convert.ToDouble(Console.ReadLine());
+            
 
 
             switch (oper)
@@ -49,14 +49,14 @@ namespace calculation
                             }
                             else
                             {
-                            Console.WriteLine($"Делить на 0 нельзя!");
+                            Console.WriteLine("Делить на 0 нельзя!");
                             break;
                             }
 
                     }
                 default:
                     {
-                        Console.WriteLine($"Набрана неизвестная операция");
+                        Console.WriteLine("Набрана неизвестная операция");
                         break;
                     }
 
