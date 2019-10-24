@@ -6,62 +6,79 @@ namespace calculation
     {
         static void Main(string[] args)
         {
-
-
-            Console.WriteLine("Введите первое число");
-            double a = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Введите операцию (+,-,*,/)");
-            string oper = Console.ReadLine();
-            Console.WriteLine("Введите второе число");
-            double b = Convert.ToDouble(Console.ReadLine());
-            
-
-
-            switch (oper)
+            string a = "";
+            string b = "";
+            string oper = "";
+            //string exit = "exit";
+            Console.WriteLine("Для выхода наберите exit");
+            while (a != "exit")
             {
-                case "+":
+                Console.WriteLine("Введите первое число");
+                a = Console.ReadLine();
+                if (a == "exit")  return; 
+                else
+                {
+                    Console.WriteLine("Введите операцию (+,-,*,/)");
+                    oper = Console.ReadLine();
+                    if (oper == "exit") return;
+                    else
                     {
-                        var result = a + b;
-                        Console.WriteLine($"{a} + {b} = {result}");
-                        break;
+                        Console.WriteLine("Введите второе число");
+                        b = Console.ReadLine();
+                        if (b == "exit") return;
+                        else
+                        {
 
-                    }
-                case "-":
-                    {
-                        var result = a - b;
-                        Console.WriteLine($"{a} - {b} = {result}");
-                        break;
-                    }
-                case "*":
-                    {
-                        var result = a * b;
-                        Console.WriteLine($"{a} * {b} = {result}");
-                        break;
-                    }
-                case "/":
-                    {
-                        
-                            if (b != 0)
-                            {   
-                                var result = a / b;
-                                Console.WriteLine($"{a} / {b} = {result}");
-                                break;
-                            }
-                            else
+                            switch (oper)
                             {
-                            Console.WriteLine("Делить на 0 нельзя!");
-                            break;
+
+                                case "+":
+                                    {
+                                        var result = Convert.ToDouble(a) + Convert.ToDouble(b);
+                                        Console.WriteLine($"{a} + {b} = {result}");
+                                        break;
+
+                                    }
+                                case "-":
+                                    {
+                                        var result = Convert.ToDouble(a) - Convert.ToDouble(b);
+                                        Console.WriteLine($"{a} - {b} = {result}");
+                                        break;
+                                    }
+                                case "*":
+                                    {
+                                        var result = Convert.ToDouble(a) * Convert.ToDouble(b);
+                                        Console.WriteLine($"{a} * {b} = {result}");
+                                        break;
+                                    }
+                                case "/":
+                                    {
+
+                                        if (Convert.ToDouble(b) != 0)
+                                        {
+                                            var result = Convert.ToDouble(a) / Convert.ToDouble(b);
+                                            Console.WriteLine($"{a} / {b} = {result}");
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Делить на 0 нельзя!");
+                                            break;
+                                        }
+
+                                    }
+                                default:
+                                    {
+                                        Console.WriteLine("Набрана неизвестная операция");
+                                        break;
+                                    }
                             }
-
-                    }
-                default:
-                    {
-                        Console.WriteLine("Набрана неизвестная операция");
-                        break;
+                        }
                     }
 
+                    } 
             }
-
+            
         }
     }
 }
