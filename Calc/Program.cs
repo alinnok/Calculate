@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace calculation
 {
@@ -9,23 +10,38 @@ namespace calculation
             string a = "";
             string b = "";
             string oper = "";
-            //string exit = "exit";
+            List<string> history = new List<string>();
             Console.WriteLine("Для выхода наберите exit");
             while (a != "exit")
             {
                 Console.WriteLine("Введите первое число");
                 a = Console.ReadLine();
-                if (a == "exit")  return; 
+                if (a == "exit")
+                {
+                    for (var i = 0; i < history.Count; i++)
+                      Console.WriteLine(history[i]);
+                    return;
+                }
                 else
                 {
                     Console.WriteLine("Введите операцию (+,-,*,/)");
                     oper = Console.ReadLine();
-                    if (oper == "exit") return;
+                    if (oper == "exit")
+                    {
+                        for (var i = 0; i < history.Count; i++)
+                            Console.WriteLine(history[i]);
+                        return;
+                    }
                     else
                     {
                         Console.WriteLine("Введите второе число");
                         b = Console.ReadLine();
-                        if (b == "exit") return;
+                        if (b == "exit")
+                        {
+                            for (var i = 0; i < history.Count; i++)
+                                Console.WriteLine(history[i]);
+                            return;
+                        }
                         else
                         {
 
@@ -36,6 +52,7 @@ namespace calculation
                                     {
                                         var result = Convert.ToDouble(a) + Convert.ToDouble(b);
                                         Console.WriteLine($"{a} + {b} = {result}");
+                                        history.Add(string.Format("{0} + {1} = {2}", a, b, result));
                                         break;
 
                                     }
@@ -43,12 +60,14 @@ namespace calculation
                                     {
                                         var result = Convert.ToDouble(a) - Convert.ToDouble(b);
                                         Console.WriteLine($"{a} - {b} = {result}");
+                                        history.Add(string.Format("{0} - {1} = {2}", a, b, result));
                                         break;
                                     }
                                 case "*":
                                     {
                                         var result = Convert.ToDouble(a) * Convert.ToDouble(b);
                                         Console.WriteLine($"{a} * {b} = {result}");
+                                        history.Add(string.Format("{0} * {1} = {2}", a, b, result));
                                         break;
                                     }
                                 case "/":
@@ -58,6 +77,7 @@ namespace calculation
                                         {
                                             var result = Convert.ToDouble(a) / Convert.ToDouble(b);
                                             Console.WriteLine($"{a} / {b} = {result}");
+                                            history.Add(string.Format("{0} / {1} = {2}", a, b, result));
                                             break;
                                         }
                                         else
@@ -76,7 +96,7 @@ namespace calculation
                         }
                     }
 
-                    } 
+                }
             }
             
         }
