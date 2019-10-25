@@ -12,86 +12,102 @@ namespace calculation
             string oper = "";
             List<string> history = new List<string>();
             Console.WriteLine("Для выхода наберите exit");
+            Console.WriteLine("Для просмотра истории операций наберите history");
             while (a != "exit")
             {
                 Console.WriteLine("Введите первое число");
                 a = Console.ReadLine();
                 if (a == "exit")
-                {
-                    for (var i = 0; i < history.Count; i++)
-                      Console.WriteLine(history[i]);
+
                     return;
-                }
                 else
                 {
-                    Console.WriteLine("Введите операцию (+,-,*,/)");
-                    oper = Console.ReadLine();
-                    if (oper == "exit")
-                    {
-                        for (var i = 0; i < history.Count; i++)
+                    if (a == "history")
+                    { for (var i = 0; i < history.Count; i++)
                             Console.WriteLine(history[i]);
-                        return;
                     }
                     else
                     {
-                        Console.WriteLine("Введите второе число");
-                        b = Console.ReadLine();
-                        if (b == "exit")
+                        Console.WriteLine("Введите операцию (+,-,*,/)");                        
+                        oper = Console.ReadLine();
+                    }
+                
+                    if (oper == "exit")
+                        return;
+                    else
+                    {
+                        if (oper == "history")
                         {
                             for (var i = 0; i < history.Count; i++)
                                 Console.WriteLine(history[i]);
-                            return;
                         }
-                        else
+                         else
                         {
+                        Console.WriteLine("Введите второе число");
+                        b = Console.ReadLine();
+                            if (b == "exit")
 
-                            switch (oper)
+                                return;
+                            else
                             {
 
-                                case "+":
-                                    {
-                                        var result = Convert.ToDouble(a) + Convert.ToDouble(b);
-                                        Console.WriteLine($"{a} + {b} = {result}");
-                                        history.Add(string.Format("{0} + {1} = {2}", a, b, result));
-                                        break;
+                                if (b == "history")
+                                {
+                                    for (var i = 0; i < history.Count; i++)
+                                        Console.WriteLine(history[i]);
+                                }
+                                else
+                                {
 
-                                    }
-                                case "-":
-                                    {
-                                        var result = Convert.ToDouble(a) - Convert.ToDouble(b);
-                                        Console.WriteLine($"{a} - {b} = {result}");
-                                        history.Add(string.Format("{0} - {1} = {2}", a, b, result));
-                                        break;
-                                    }
-                                case "*":
-                                    {
-                                        var result = Convert.ToDouble(a) * Convert.ToDouble(b);
-                                        Console.WriteLine($"{a} * {b} = {result}");
-                                        history.Add(string.Format("{0} * {1} = {2}", a, b, result));
-                                        break;
-                                    }
-                                case "/":
+                                    switch (oper)
                                     {
 
-                                        if (Convert.ToDouble(b) != 0)
-                                        {
-                                            var result = Convert.ToDouble(a) / Convert.ToDouble(b);
-                                            Console.WriteLine($"{a} / {b} = {result}");
-                                            history.Add(string.Format("{0} / {1} = {2}", a, b, result));
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("Делить на 0 нельзя!");
-                                            break;
-                                        }
+                                        case "+":
+                                            {
+                                                var result = Convert.ToDouble(a) + Convert.ToDouble(b);
+                                                Console.WriteLine($"{a} + {b} = {result}");
+                                                history.Add(string.Format("{0} + {1} = {2}", a, b, result));
+                                                break;
 
+                                            }
+                                        case "-":
+                                            {
+                                                var result = Convert.ToDouble(a) - Convert.ToDouble(b);
+                                                Console.WriteLine($"{a} - {b} = {result}");
+                                                history.Add(string.Format("{0} - {1} = {2}", a, b, result));
+                                                break;
+                                            }
+                                        case "*":
+                                            {
+                                                var result = Convert.ToDouble(a) * Convert.ToDouble(b);
+                                                Console.WriteLine($"{a} * {b} = {result}");
+                                                history.Add(string.Format("{0} * {1} = {2}", a, b, result));
+                                                break;
+                                            }
+                                        case "/":
+                                            {
+
+                                                if (Convert.ToDouble(b) != 0)
+                                                {
+                                                    var result = Convert.ToDouble(a) / Convert.ToDouble(b);
+                                                    Console.WriteLine($"{a} / {b} = {result}");
+                                                    history.Add(string.Format("{0} / {1} = {2}", a, b, result));
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("Делить на 0 нельзя!");
+                                                    break;
+                                                }
+
+                                            }
+                                        default:
+                                            {
+                                                Console.WriteLine("Набрана неизвестная операция");
+                                                break;
+                                            }
                                     }
-                                default:
-                                    {
-                                        Console.WriteLine("Набрана неизвестная операция");
-                                        break;
-                                    }
+                                }
                             }
                         }
                     }
